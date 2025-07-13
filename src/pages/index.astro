@@ -1,21 +1,69 @@
----
-import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
+export default {
+  async fetch(request, env, ctx) {
+    // 页面数据
+    const pageTitle = "阿马尔菲海岸终极旅行指南";
+    const destinations = [
+      {
+        id: 1,
+        name: "波西塔诺",
+        description: "意大利最著名的悬崖小镇，彩色房屋如瀑布般倾泻至地中海，拥有绝美的沙滩和奢侈品商店。",
+        highlights: ["斯皮亚格亚海滩", "圣母升天教堂", "柠檬酒品尝"],
+        image: "/images/01.jpg",
+        tips: "最佳游览时间：5-6月或9-10月避开人流。从索伦托乘SITA巴士可达。"
+      },
+      // 其他目的地数据...
+    ];
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
+    // 构建HTML响应
+    const html = `
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+      <title>${pageTitle}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+        /* 您原有的CSS样式保持不变 */
+        :root { --primary: #2a5f8a; --secondary: #6b8e23; --accent: #d4a017; }
+        body { font-family: 'Noto Sans SC', sans-serif; line-height: 1.8; color: #333; 
+               max-width: 1200px; margin: 0 auto; padding: 0 20px; background: #f9f9f9; }
+        /* 其他样式... */
+      </style>
+    </head>
+    <body>
+      <header>
+        <h1>${pageTitle}</h1>
+        <p>探索意大利最梦幻的50公里海岸线</p>
+      </header>
+      <main>
+        ${destinations.map(destination => `
+          <article class="destination-card">
+            <img src="${destination.image}" alt="${destination.name}" 
+                 class="destination-image" loading="lazy" width="1200" height="800">
+            <div class="destination-content">
+              <h2>${destination.name}</h2>
+              <p>${destination.description}</p>
+              <div class="highlights">
+                ${destination.highlights.map(item => `
+                  <span class="highlight-tag">${item}</span>
+                `).join('')}
+              </div>
+              <div class="tip-card">
+                <h3>📌 旅行小贴士</h3>
+                <p>${destination.tips}</p>
+              </div>
+            </div>
+          </article>
+        `).join('')}
+      </main>
+      <footer style="text-align: center; padding: 2rem; color: var(--primary);">
+        <p>© ${new Date().getFullYear()} 阿马尔菲海岸旅行指南</p>
+      </footer>
+    </body>
+    </html>
+    `;
 
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
----
-
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
-</Layout>
+    return new Response(html, {
+      headers: { 'Content-Type': 'text/html; charset=utf-8' }
+    });
+  }
+}
