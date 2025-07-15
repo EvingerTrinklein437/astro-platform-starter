@@ -3,15 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>意大利阿马尔菲海岸旅行指南</title>
+  <meta name="description" content="意大利阿马尔菲海岸完整旅行指南，包含波西塔诺、阿马尔菲、拉韦洛等小镇的详细介绍、旅行贴士和实用信息">
+  <title>意大利阿马尔菲海岸深度旅行指南 | 地中海明珠</title>
   <style>
     :root {
-      --blue: #2a5f8a;
-      --green: #6b8e23;
-      --gold: #d4a017;
+      --primary: #2a5f8a;
+      --secondary: #6b8e23;
+      --accent: #d4a017;
       --text: #333;
       --bg: #f9f9f9;
+      --light-bg: #f0f7ff;
     }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
     body {
       font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
       line-height: 1.8;
@@ -21,170 +30,384 @@
       margin: 0 auto;
       padding: 0 20px;
     }
+    
     header {
       text-align: center;
-      padding: 4rem 0;
+      padding: 5rem 0 4rem;
       background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                  url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover;
+                  url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80') center/cover;
       color: white;
       margin-bottom: 3rem;
       border-radius: 0 0 20px 20px;
+      position: relative;
     }
+    
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      font-weight: 600;
     }
+    
     .subtitle {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       opacity: 0.9;
+      margin-bottom: 2rem;
     }
+    
+    .intro-text {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      text-align: center;
+      color: #555;
+    }
+    
     .destination-card {
       background: white;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 2.5rem;
-      transition: transform 0.3s;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      margin-bottom: 3rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
     .destination-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
     }
+    
     .destination-image {
       width: 100%;
-      height: 380px;
+      height: 450px;
       object-fit: cover;
-      border-bottom: 4px solid var(--gold);
+      border-bottom: 4px solid var(--accent);
     }
+    
     .destination-content {
-      padding: 1.8rem;
+      padding: 2.5rem;
     }
+    
+    .destination-content h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+    
+    .destination-content h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .destination-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.9;
+    }
+    
     .highlights {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 1.2rem 0;
+      gap: 12px;
+      margin: 1.5rem 0;
     }
+    
     .highlight-tag {
-      background: var(--gold);
+      background: var(--accent);
       color: white;
-      padding: 6px 12px;
+      padding: 8px 16px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
+    
     .tip-card {
-      background: #f0f7ff;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 1.5rem;
+      background: var(--light-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+      border-left: 4px solid var(--accent);
     }
+    
+    .tip-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .essentials-section {
+      background: var(--light-bg);
+      padding: 2.5rem;
+      border-radius: 12px;
+      margin: 4rem auto;
+      max-width: 900px;
+    }
+    
+    .essentials-section h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    
+    .essentials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .essential-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .essential-item h3 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .essential-item ul {
+      padding-left: 1.5rem;
+    }
+    
+    .essential-item li {
+      margin-bottom: 0.6rem;
+      line-height: 1.7;
+    }
+    
     footer {
       text-align: center;
-      padding: 2rem;
-      color: var(--blue);
+      padding: 3rem 0;
+      color: var(--primary);
       border-top: 1px solid #eee;
+      margin-top: 2rem;
     }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .footer-links a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    
     @media (max-width: 768px) {
       h1 { font-size: 2.2rem; }
-      .destination-image { height: 280px; }
+      .subtitle { font-size: 1.1rem; }
+      .destination-image { height: 300px; }
+      .destination-content { padding: 1.5rem; }
+      .essentials-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>意大利阿马尔菲海岸旅行指南</h1>
-    <p class="subtitle">地中海最迷人的50公里海岸线</p>
+    <div class="header-content">
+      <h1>意大利阿马尔菲海岸深度旅行指南</h1>
+      <p class="subtitle">探索地中海最迷人的50公里海岸线</p>
+    </div>
   </header>
 
   <main>
+    <p class="intro-text">
+      阿马尔菲海岸被联合国教科文组织列为世界文化遗产，这条蜿蜒的海岸线上散布着色彩斑斓的渔村、陡峭的悬崖和碧蓝的海水。从波西塔诺的浪漫别墅到拉韦洛的花园露台，每个转角都能遇见令人屏息的美景。本指南将带您深度探索这片意大利南部的天堂。
+    </p>
+    
     <!-- 波西塔诺 -->
     <article class="destination-card">
-      <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+      <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
            alt="波西塔诺彩色房屋"
            class="destination-image"
            loading="lazy"
-           width="1200"
-           height="800">
+           width="1600"
+           height="900">
       <div class="destination-content">
-        <h2>波西塔诺</h2>
-        <p>意大利最著名的悬崖小镇，彩色房屋如瀑布般从悬崖倾泻至地中海，黄昏时分尤其美丽。推荐在Le Sirenuse酒店的露台享用日落鸡尾酒。</p>
+        <h2>波西塔诺 (Positano)</h2>
+        <p>波西塔诺是阿马尔菲海岸最著名的明珠，这个垂直建造在悬崖上的小镇以其糖果色的房屋和蜿蜒的阶梯小巷闻名。小镇从山顶一直延伸到海边，形成了独特的阶梯式景观。</p>
+        <p>清晨，当第一缕阳光照射在彩色房屋上时，整个小镇仿佛被镀上了一层金色。傍晚时分，建议前往斯皮亚格亚海滩(Spaggia Grande)，这里是欣赏地中海日落的最佳地点之一。</p>
+        
         <div class="highlights">
           <span class="highlight-tag">斯皮亚格亚海滩</span>
           <span class="highlight-tag">圣母升天教堂</span>
-          <span class="highlight-tag">Path of the Gods徒步路线</span>
+          <span class="highlight-tag">Path of the Gods徒步</span>
+          <span class="highlight-tag">Da Adolfo海滩俱乐部</span>
+          <span class="highlight-tag">Le Sirenuse酒店</span>
         </div>
+        
         <div class="tip-card">
           <h3>✨ 本地人建议</h3>
-          <p>最佳游览时间是5-6月或9-10月，避开7-8月的旅游高峰。从索伦托乘坐SITA巴士即可到达。</p>
+          <p><strong>最佳时间：</strong>5-6月或9-10月来访，避开7-8月的旅游高峰和高温。</p>
+          <p><strong>交通：</strong>从索伦托乘坐SITA巴士约1小时可达，建议购买Unico Costiera通票。小镇内没有汽车通行，准备好步行探索陡峭的阶梯小巷。</p>
+          <p><strong>住宿：</strong>Le Sirenuse酒店的露台是欣赏日落的最佳地点，预算有限的游客可以选择山腰上的家庭旅馆。</p>
+          <p><strong>美食：</strong>尝试当地特色海鲜面"Scialatielli ai Frutti di Mare"和柠檬甜点"Delizia al Limone"。</p>
         </div>
       </div>
     </article>
 
     <!-- 阿马尔菲镇 -->
     <article class="destination-card">
-      <img src="https://images.unsplash.com/photo-1602088113235-229c19758e9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+      <img src="https://images.unsplash.com/photo-1602088113235-229c19758e9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
            alt="阿马尔菲大教堂"
            class="destination-image"
            loading="lazy"
-           width="1200"
-           height="800">
+           width="1600"
+           height="900">
       <div class="destination-content">
-        <h2>阿马尔菲镇</h2>
-        <p>中世纪海上共和国的首府，以其宏伟的圣安德烈大教堂和传统手工造纸闻名。中心广场的咖啡馆是观察当地生活的最佳地点。</p>
+        <h2>阿马尔菲镇 (Amalfi)</h2>
+        <p>作为中世纪阿马尔菲海上共和国的首都，这个小镇充满了历史气息。宏伟的圣安德烈大教堂(Duomo di Sant'Andrea)是这里的标志性建筑，其独特的阿拉伯-诺曼风格立面令人印象深刻。</p>
+        <p>阿马尔菲还以传统手工造纸闻名，参观Valle dei Mulini的古造纸厂博物馆(Museo della Carta)是了解这一古老工艺的好去处。小镇的主广场Piazza del Duomo总是充满活力，是观察当地生活的最佳地点。</p>
+        
         <div class="highlights">
           <span class="highlight-tag">圣安德烈大教堂</span>
           <span class="highlight-tag">手工造纸博物馆</span>
           <span class="highlight-tag">翡翠洞</span>
+          <span class="highlight-tag">Valle delle Ferriere自然保护区</span>
+          <span class="highlight-tag">Piazza del Duomo广场</span>
         </div>
+        
         <div class="tip-card">
           <h3>✨ 本地人建议</h3>
-          <p>一定要尝试当地特色甜品Delizia al Limone（柠檬蛋糕），并购买手工柠檬皂作为伴手礼。</p>
+          <p><strong>参观技巧：</strong>大教堂的青铜门只在特定时间开放，建议早上参观以避免排队。地下墓穴(Chiostro del Paradiso)不容错过。</p>
+          <p><strong>购物：</strong>购买当地手工柠檬皂和Limoncello柠檬酒作为伴手礼，推荐老店Antica Sartoria Amalfitana。</p>
+          <p><strong>徒步：</strong>Valle delle Ferriere自然保护区有美丽的瀑布和植被，适合半日徒步。</p>
+          <p><strong>美食：</strong>尝试当地特色"Scarpariello"（一种用番茄和奶酪烹制的意大利面）和"Delizia al Limone"柠檬蛋糕。</p>
         </div>
       </div>
     </article>
 
     <!-- 拉韦洛 -->
     <article class="destination-card">
-      <img src="https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+      <img src="https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
            alt="拉韦洛别墅花园"
            class="destination-image"
            loading="lazy"
-           width="1200"
-           height="800">
+           width="1600"
+           height="900">
       <div class="destination-content">
-        <h2>拉韦洛</h2>
-        <p>坐落在海拔350米的山顶小镇，以其奢华别墅和壮丽海景闻名。辛波乃别墅的"无限露台"仿佛悬浮在地中海上空。</p>
+        <h2>拉韦洛 (Ravello)</h2>
+        <p>坐落在海拔350米的山顶上，拉韦洛以其宁静的氛围和壮丽的全景而闻名。这里是艺术家和作家寻找灵感的地方，德国作曲家瓦格纳曾在此创作。</p>
+        <p>辛波乃别墅(Villa Cimbrone)的"无限露台"(Terrazza dell'Infinito)是阿马尔菲海岸最具标志性的景点之一，站在露台上，眼前是180度的地中海全景，仿佛悬浮在天地之间。鲁菲洛别墅(Villa Rufolo)的花园同样令人叹为观止，每年夏季还会举办著名的瓦格纳音乐节。</p>
+        
         <div class="highlights">
           <span class="highlight-tag">辛波乃别墅</span>
           <span class="highlight-tag">鲁菲洛别墅</span>
           <span class="highlight-tag">瓦格纳音乐节</span>
+          <span class="highlight-tag">圣潘塔莱昂教堂</span>
+          <span class="highlight-tag">观景台Belvedere</span>
         </div>
+        
         <div class="tip-card">
           <h3>✨ 本地人建议</h3>
-          <p>清晨前往观景台可以看到云海漫过海岸线的奇观。推荐在Villa Cimbrone的花园茶室享用下午茶。</p>
+          <p><strong>最佳体验：</strong>清晨前往观景台Belvedere可以看到云海漫过海岸线的奇观。建议在辛波乃别墅开园时(9:00)第一批进入，避开人群。</p>
+          <p><strong>音乐爱好者：</strong>如果7-8月来访，不要错过鲁菲洛别墅的瓦格纳音乐节，提前在线购票。</p>
+          <p><strong>下午茶：</strong>Villa Cimbrone的花园茶室提供地道的意大利咖啡和甜点，环境绝佳。</p>
+          <p><strong>交通：</strong>从阿马尔菲镇乘坐巴士约25分钟可达，山路蜿蜒但风景绝美。小镇内完全步行，建议穿舒适的鞋子。</p>
         </div>
       </div>
     </article>
 
-    <!-- 旅行贴士 -->
-    <section class="tip-card" style="margin: 3rem auto; max-width: 800px;">
-      <h2 style="text-align: center; color: var(--blue);">📋 实用旅行建议</h2>
-      <ul style="padding-left: 1.2rem;">
-        <li style="margin-bottom: 0.8rem;">🚌 交通：建议购买Unico Costiera 3日通票（€25），可无限次乘坐沿海巴士</li>
-        <li style="margin-bottom: 0.8rem;">🍋 美食：必尝Scialatielli海鲜面和柠檬冰淇淋</li>
-        <li style="margin-bottom: 0.8rem;">⚠️ 安全：S型沿海公路限速30km/h，新手不建议自驾</li>
-      </ul>
+    <!-- 实用旅行建议 -->
+    <section class="essentials-section">
+      <h2>📋 阿马尔菲海岸旅行必备知识</h2>
+      <div class="essentials-grid">
+        <div class="essential-item">
+          <h3>🚌 交通指南</h3>
+          <ul>
+            <li><strong>公共交通：</strong>建议购买Unico Costiera通票(€25/3天)，可无限次乘坐沿海SITA巴士</li>
+            <li><strong>自驾提示：</strong>SS163沿海公路狭窄蜿蜒，新手不建议自驾。旺季(6-9月)停车费高达€30/天</li>
+            <li><strong>渡轮：</strong>4-10月有连接各小镇的渡轮，风景优美但价格较贵</li>
+            <li><strong>出租车：</strong>价格昂贵，从波西塔诺到阿马尔菲约€80</li>
+          </ul>
+        </div>
+        
+        <div class="essential-item">
+          <h3>🍽️ 美食推荐</h3>
+          <ul>
+            <li><strong>必尝特色：</strong>Scialatielli手工宽面、柠檬甜点Delizia al Limone、新鲜海鲜</li>
+            <li><strong>波西塔诺：</strong>Da Vincenzo(传统意面)、La Sponda(米其林星级)</li>
+            <li><strong>阿马尔菲：</strong>Marina Grande(海滨餐厅)、Pansa甜点店</li>
+            <li><strong>拉韦洛：</strong>Villa Maria(花园餐厅)、Salvatore Ravello(当地风味)</li>
+          </ul>
+        </div>
+        
+        <div class="essential-item">
+          <h3>🏨 住宿建议</h3>
+          <ul>
+            <li><strong>高端之选：</strong>波西塔诺Le Sirenuse、拉韦洛Belmond Hotel Caruso</li>
+            <li><strong>中档推荐：</strong>阿马尔菲Hotel Luna Convento(修道院改建)</li>
+            <li><strong>经济型：</strong>各小镇的B&B和家庭旅馆，提前3个月预订</li>
+            <li><strong>旺季：</strong>6-9月价格翻倍，5月或10月性价比最高</li>
+          </ul>
+        </div>
+        
+        <div class="essential-item">
+          <h3>⚠️ 实用贴士</h3>
+          <ul>
+            <li><strong>最佳季节：</strong>5-6月和9-10月，气候宜人且游客较少</li>
+            <li><strong>穿着：</strong>舒适的步行鞋是必须的，小镇都是陡峭阶梯</li>
+            <li><strong>现金：</strong>准备小额现金，部分小店和巴士只收现金</li>
+            <li><strong>语言：</strong>学习基本意大利语问候语，当地人会更热情</li>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© <span id="year"></span> 阿马尔菲海岸旅行指南 · 
-       <a href="#" style="color: var(--blue);">隐私政策</a></p>
+    <div class="footer-links">
+      <a href="#">关于我们</a>
+      <a href="#">联系方式</a>
+      <a href="#">隐私政策</a>
+      <a href="#">使用条款</a>
+    </div>
+    <p>© <span id="year"></span> 意大利阿马尔菲海岸旅行指南 | 转载请注明出处</p>
   </footer>
 
   <script>
     // 自动更新年份
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
 </body>
 </html>
